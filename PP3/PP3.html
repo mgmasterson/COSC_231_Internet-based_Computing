@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="bg1.jpg" rel="stylesheet" type="text/css"/>
+<style>
+	body
+	{
+		background-image: url("bg1.jpg");
+	}
+	p
+	{
+		front-family: Times New Roman, Arial, sans-serif;
+	}
+	
+	#cont
+	{
+		text-align: center;
+		background-color: white;
+	}
+	
+	#values
+	{
+		text-align: center;
+		background-color: white;
+	}
+</style>
+</head>
+
+<body>
+
+<script>
+
+var fn="Holly";
+
+function dear()
+{
+	fn = document.getElementById("fn");
+	
+	document.getElementById("values").innerHTML=
+	"Dear " + fn.value + ", Even though we have a special connection, sometimes I feel that we don't see eye to eye" +
+	" on some things. I know that we try and work it out but it is not working. I love you, " + fn.value + ", and will always love you.";
+}
+
+function employ()
+{
+	fn = document.getElementById("fn");
+	
+	document.getElementById("values").innerHTML=
+	"Dear " + fn.value + ", On behalf of the company, we are pleased to offer the position." +
+	"Your starting date is on October 9, 2014. Report directly to the Human Resources Offfice." +  
+	" As a part of the Google family you will innovating ideas and helping us progress in the 21st century. We look forward in having in our company " + fn.value +".";
+}
+
+function evict()
+{
+	fn = document.getElementById("fn");
+	
+	document.getElementById("values").innerHTML=
+	"Dear " + fn.value + ", We have sent you multiple warnings regarding your late payments. When you signed the rental agreement it clearly states that you have to pay " + 
+	"at the first of the month. Since failure on your part on the agreement, the management team has determined to evict you. " + fn.value + ", please call us with any questions.";
+}
+
+</script>
+
+<div id = "cont">
+		<form>
+			<label> What is your name?</label>
+				<input id="fn" value ="name" type="text" />
+				
+				<input type="button" value="Dear" onClick="dear();"/>
+				<input type="button" value="Employment" onClick="employ();"/>
+				<input type="button" value="Eviction" onClick="evict();"/>
+		</form>
+<div>
+<div id ="values">
+</div>
+</body>
+</html>

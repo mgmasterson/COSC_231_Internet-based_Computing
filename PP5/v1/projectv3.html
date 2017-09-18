@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>project5v3</title>
+	<link rel="stylesheet" href="master3.css">
+</head>
+
+<body style ='margin: 0'>
+	<nav id="toolbar"> 		<!--toolbar menu-->
+		<nav id="rad">		<!--radius part -->
+			Radius<span id="radval">10</span>
+			<nav id="decrad" class="radcontrol">-</nav>
+			<nav id="incrad" class="radcontrol">+</nav>
+		</nav>
+		<nav id="colors3">	<!--color pen-->
+			Choose Color pen:
+		</nav>
+		<nav id="background">   <!--background color-->
+			Choose Background Color:
+		</nav>
+		<!--buttons for images-->
+		<button onclick="draw_pic(); return true;">Click for Image</button>
+		<button onclick="clear_image(); return true;">Clear Image</button>
+	</nav>
+	<nav id ="st" style="position:absolute;top:83%;left:15%;">
+		Current mouse position</nav>
+	
+	
+	<!--create canvas with default size-->
+	<canvas id="canvas" width="512" height="512" 
+		style="border:2px solid #000000;">
+		Your browser does not support HTML5 Canvas element.
+	</canvas>	
+	
+	<!--JavaScript files for program-->
+	<script src="main3.js"></script>
+	<script src="radius3.js"></script>
+	<script src="colors3.js"></script>
+	<script src="pic.js"></script>
+	<script src="background.js"></script>
+	
+</body>
+</html>

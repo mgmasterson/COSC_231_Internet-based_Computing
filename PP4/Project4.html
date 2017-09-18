@@ -1,0 +1,155 @@
+//Michael Masterson
+//E00942993
+//COSC 231
+//Project 4
+//October 22, 2014
+
+<!DOCTYPE HTML PUBLIC>
+
+<html>
+<head> 
+<title>Project 4</title>
+
+<style>
+body  
+{
+    background-image: url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/01/Technology-Wallpaper-14.jpg');
+    background-color: #cccccc;
+}
+</style>
+
+<script>
+
+var count;			
+var rTime = new Date();		
+var end = 0;				
+var start =0;			
+var top = 0;				
+var left = 0;				
+var down = 0;				
+var bot = 0;			
+var setTime =new Date();	
+var objWidth = 100;  		
+var objHeight = 100; 		
+var dX = 0;			
+var dY = 0;			
+
+function randomize() //random location
+{
+	
+	left=Math.random()*end;
+	down=Math.random()*bot;
+}
+
+function eventFunction(obj) //starting and then will randomize positon
+{
+	
+	dX = 45;
+	dY = 45;
+	randomize();
+}	
+
+function move(objectId) //stating speed and reduced speed
+{
+
+	var curtime = new Date();
+	var g = curtime-rTime;			
+	var h = curtime-setTime;
+	
+	if(g>=5000)
+	{
+		randomize();
+		rTime= new Date(); 
+	}
+	
+	if(h>=2000)
+	{
+			
+		if(dY>2)
+		{
+			dY=dY-2;
+		}	
+		if(dX>2)
+		{
+			dX=dX-2;
+		}	
+						
+		setTime=new Date();
+	}
+        if(down < bot)
+		{
+			document.getElementById(objectId).style.top = (down + dY);		
+		}
+	else
+	{			
+		document.getElementById(objectId).style.top = (2* bot- down);	
+	}
+	
+	down = (down + dY)% (2*bot);
+        
+	if(left < end)
+	{		
+		document.getElementById(objectId).style.lft = (left + dX);			
+	}
+	else
+	{		
+		document.getElementById(objectId).style.left = (2* end- left);		
+	}
+	left = (left + dX)% (2*end); 	
+}
+
+//starting command
+function startMove(objectId, startPointLeft, endPointLeft, startPointTop, endPointTop)
+{
+	var cmd = "move(\'" + objectId + "\' "  + ")" ;
+	alert("Tease the Kitty, Move you mouse around and the kitty will move");
+	count =    setInterval(cmd, 50);
+
+}
+
+//will resize window.
+function myResize()
+{
+
+	if(window.innerHeight)
+	{
+		bot = window.innerHeight;
+	}
+	else if (window.document.body.clientHeight)
+	{
+		bot = window.document.body.clientHeight;
+	}
+	
+
+	if(window.innerWidth) 
+	{
+		end = window.innerWidth;
+	} 
+	else if (window.document.body.clientWidth) 
+	{
+		end = window.document.body.clientWidth;
+	}
+  	
+  	start = objWidth;
+	end -= objWidth;
+	top = objHeight;
+	bot -= objHeight;
+	
+}
+
+</script>	
+</head>
+
+<body bgcolor="#fefefe"; onResize="myResize()" onload="startMove('grey',start,end,top,bot)";>
+
+<div id="grey"  onmousemove="eventFunction(event)";
+	style="position: absolute; top: 0 px; left: 0px; z-index: 3; width: 100; height: 100; ">
+	<img name="grey" src="http://www.mrwallpaper.com/wallpapers/cuddle-kitten-1600x1200.jpg" 
+	width="130" height="130" border="0" alt="kitty">
+</div>
+
+<script>
+	myResize();
+</script>
+</body>
+</html>
