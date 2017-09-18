@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>bouncy - beginning animation</title>
+
+<script language="JavaScript" type="text/javascript">
+
+	var timer;
+	var deltaX = 5;		// number of x pixels moved each call
+	var left = 0;
+	var timerOn = false;
+
+function move(objectId) 
+{
+	var left = parseInt(document.getElementById(objectId).style.left)
+	if (left > posEnd-objWidth)
+	{
+		deltaX = -deltaX;
+	}
+	else if (left < posStart - objWidth)
+	{
+		deltaX = -deltaX;
+	}
+	left = left + deltaX;
+	document.getElementById(objectId).style.left = (left + deltaX)% posEnd;
+}
+
+/* Good version of start timer */
+
+function startTimer(objectId, startPoint, endPoint) 
+{
+	if (!timerOn) 
+	{
+		timerOn = true;
+		var cmd = "move(\'" + objectId + "\' "  + ")" ;
+		//alert("cmd is: " + cmd);
+		timer =    setInterval(cmd, 50);
+	}
+}
+	
+function stopTimer() 
+{
+	timerOn = false;
+	clearInterval(timer);
+}
+	
+</script>	
+</head>
+
+<body bgcolor="#fefefe">
+
+<div id="jack" 
+ style="position: absolute; top: 150px; left: 0px; z-index: 3; width: 100;">
+	<img name="jack" src="http://www.gifs.net/Animation11/Sports/Other_Exercises/Jumping_jacks.gif" 
+		 width="100" height="100" border="0" alt="jumping jack">
+</div>
+
+<div id="brick1" 
+ style="position: absolute; top: 30px; left: 100px; z-index: 1;">
+	<img src="http://www.eddingschronicles.com/fansite/bookh-tree.gif" width="76" 
+		 height="175" border="0" alt="column">
+</div>
+
+<div id="brick2" 
+ style="position: absolute; top: 200px; left: 300px; z-index: 4;">
+	<img src="http://www.eddingschronicles.com/fansite/bookh-tree.gif" width="76" 
+		 height="75" border="0" alt="column">
+</div>
+
+<div id="3" 
+ style="position: absolute; top: 30px; left: 500px; z-index: 2;">
+	<img src="http://www.eddingschronicles.com/fansite/bookh-tree.gif" width="76" 
+		 height="175" border="0" alt="column">
+</div>
+
+<form style="position: absolute; top: 350px; left: 294px;">
+	<input type="button" value="Start"
+		   onClick="startTimer('jack', posStart, posEnd);">
+	<!--<input style="position: absolute; top: 350px; left: 320px;">-->
+	<input type="button" value="Stop"
+		   onClick="stopTimer();">
+</form>
+
+<script language="JavaScript" type="text/javascript">
+	var posStart = 0;
+	var posEnd = 0;
+	var objWidth = 100;			// set to width of animated object
+	if(window.innerWidth) 
+	{
+		posEnd = window.innerWidth
+	} 
+	else if (window.document.body.clientWidth) 
+	{
+		posEnd = window.document.body.clientWidth
+	}
+	posStart = objWidth
+	posEnd -= objWidth;
+</script>
+</body>
+</html>

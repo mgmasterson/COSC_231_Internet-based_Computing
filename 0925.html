@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>In Lab 9/25</title>
+</head>
+
+<body>
+	
+	<p>Michael Masterson</p>
+	<p>mmaster8</p>
+	<p>Susan Haynes</p>
+	<p>COSC 231</p>
+	<p>Fall 2014</p>
+	<p>September 25, 2014</p>
+	
+	<h3>Max and Min</h3>
+	
+<script>
+
+	var num = parseFloat(prompt("Enter number of values: ",5));
+	var response = maxMin();
+	
+	function maxMin()
+	{
+		var maxnum =0;
+		var minnum =100;
+		
+		for(i=0; i < num; i++)
+		{
+			value=parseInt(prompt("next number: ",1));
+			if (value > maxnum)
+				maxnum = value;
+			if (value < minnum)
+				minnum = value;
+		}
+	alert("max is: " + maxnum + " and min is: " + minnum);
+	}
+</script>
+</body>
+</html>	

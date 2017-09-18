@@ -1,0 +1,113 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>flyswatter</title>
+
+<script language="JavaScript" type="text/javascript">
+
+var timer;
+var deltaX = 50;
+var deltaY = 50;		// number of x pixels moved each call
+var left = 0;
+var timerOn = false;
+
+
+function move(objectId) {
+	var left = parseInt(document.getElementById(objectId).style.left)
+	var top = parseInt(document.getElementById(objectId).style.top)
+	var doneleft = parseInt(document.getElementById('3').style.left)
+	var donetop = parseInt(document.getElementById('3').style.top)
+	if(top > posEnd2 || top < posStart){
+		deltaY = -deltaY
+	}
+	if(left > posEnd || left < posStart-objWidth){
+		deltaX = -deltaX
+	}
+		
+	document.getElementById(objectId).style.left = (left + deltaX);
+	document.getElementById(objectId).style.top = (top + deltaY);
+	//alert(doneleft)
+	//alert(donetop)
+		if(left == doneleft && top == donetop){
+			//document.getElementById("jack").style.display = "none";
+			document.getElementById("fly").src="https://c1.staticflickr.com/5/4002/5075539180_0fe7d1e908_z.jpg";
+			stopTimer();
+		}
+	}
+	
+
+/* Good version of start timer */
+
+function startTimer(objectId, startPoint, endPoint) {
+	if (!timerOn) {
+		timerOn = true;
+		var cmd = "move(\'" + objectId + "\' "  + ")" ;
+		//alert("cmd is: " + cmd);
+		timer =    setInterval(cmd, 50);
+		}	
+	}
+
+
+/* Bad version of start timer */
+/*
+function startTimer(objectId, startPoint, endPoint){
+        
+		var cmd = "move(\'" + objectId + "\' " +  ")" ;
+		//alert("cmd is: " + cmd);
+		timer =    setInterval(cmd, 50);
+		}
+*/
+	
+function stopTimer() {
+	timerOn = false;
+	clearInterval(timer);
+	}
+	
+</script>	
+</head>
+
+<body bgcolor="#fefefe">
+
+<div id="jack" 
+ style="position: absolute; top: 150px; left: 0px; z-index: 3; width: 100;">
+	<img id ="fly" name="jack" src="http://upload.wikimedia.org/wikipedia/commons/5/59/Mouse_spider.jpg" 
+		 width="70" height="70" border="0" alt="jumping jack">
+</div>
+
+
+
+<div id="3" 
+ style="position: absolute; top: 150px; left: 500px; z-index: 2;">
+	<img src="http://thumbs.dreamstime.com/z/closeup-swatter-isolated-white-26008919.jpg" width="76" 
+		 height="100" border="0" alt="column">
+</div>
+
+<form style="position: absolute; top: 350px; left: 294px;">
+	<input type="button" value="Start"
+		   onClick="startTimer('jack', posStart, posEnd);">
+	<!--<input style="position: absolute; top: 350px; left: 320px;">-->
+</form>
+
+<script language="JavaScript" type="text/javascript">
+	var posStart = 0;
+	var posEnd = 0;
+	var posEnd2 = 0;
+	var objWidth = 50;		// set to width of animated object
+	if(window.innerWidth) {
+		posEnd = window.innerWidth
+	} else if (window.document.body.clientWidth) {
+		posEnd = window.document.body.clientWidth
+	}
+	if(window.innerHeight) {
+		posEnd2 = window.innerHeight
+	} else if (window.document.body.clientHeight) {
+		posEnd2 = window.document.body.clientHeight
+	}
+	posStart = objWidth
+	posEnd -= objWidth;
+	posEnd2 -= objWidth;
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body onLoad = "var timer = setInterval('nxtcol()', 3000)">
+	<img src="http://psacake.com/web/dots/000000.gif" name="default" width="100" height="100" alt="image">
+	
+	<script language="JavaScript" type="text/javascript">
+		function nwcol(sourceURL)
+		{
+			nImg = new Image();
+			nImg.src = sourceURL;
+			return nImg;
+		}
+		
+		var count =0;
+		var color = new Array();
+		color[0] = nwcol("http://psacake.com/web/dots/FF0033.gif");
+		color[1] = nwcol("http://psacake.com/web/dots/FF9966.gif");
+		color[2] = nwcol("http://psacake.com/web/dots/FFFF66.gif");
+		color[3] = nwcol("http://psacake.com/web/dots/00CC66.gif");
+		color[4] = nwcol("http://psacake.com/web/dots/3300FF.gif");
+		color[5] = nwcol("http://psacake.com/web/dots/CC99FF.gif");
+		
+		function nxtcol()
+		{
+			document.default.src = color[count].src;
+			count = (++count) % color.length;
+		}
+	</script>
+	<p>Michael Masterson COSC 231 Fall 2014 10-7-2014</p> 
+</body>
+</html>	
